@@ -2,6 +2,7 @@
 #include "pico/stdlib.h"
 #include "pico/types.h"
 #include "hardware/spi.h"
+#include "hardware/clocks.h"
 
 #define SCK  6
 #define MISO 4
@@ -15,7 +16,7 @@ void setup() {
     gpio_init(CS);
     gpio_set_dir(CS, GPIO_OUT);
 
-    spi_init(spi0, 8000000);
+    spi_init(spi0, 8 * MHZ);
     gpio_set_function(MISO, GPIO_FUNC_SPI);
     gpio_set_function(SCK, GPIO_FUNC_SPI);
     gpio_set_function(MOSI, GPIO_FUNC_SPI);
